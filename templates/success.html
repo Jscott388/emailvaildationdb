@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/modernizr-2.8.3.min.js') }}"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            {% with submit = get_flashed_messages(category_filter=["success"]) %} {% if submit %}
+            <div class="alert alert-info">
+                {% for message in submit %}
+                <strong>{{ message }}</strong> {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            <h2>Email Address Entered:</h2>
+            {% for email in all_emails: %}
+            {{ email['email']}} {{ email['time']}}
+            {% endfor %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.2.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>
